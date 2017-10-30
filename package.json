@@ -1,0 +1,14 @@
+{
+  "name": "eukleides-diagrams",
+  "description": "geometry diagrams",
+  "scripts": {
+    "preangle": "eukleides -a A36 angle.euk",
+    "angle":
+      "convert -density 500 -delay 1 -alpha off -loop 0 -resize 800x800 angle.ps angle.gif",
+    "preradius": "eukleides -a R30 radius.euk",
+    "radius":
+      "convert -density 500 -delay 1 -alpha off -loop 0 -resize 800x800 radius.ps radius.gif"
+  },
+  "author": "Varun Vachhar <varunvachhar@gmail.com>",
+  "license": "MIT"
+}

@@ -1,0 +1,45 @@
+box 0, 0, 10, 10
+
+vertical Radius(#R, 0.7, 2.8, 0.1) = 0.1
+
+Angle = 45
+M = point(0, 0)
+N = point(10, 0)
+
+O = point(5, 5)
+C = circle(O, Radius)
+
+P = point(C, Angle:)
+
+% Axis
+X' = point(1, 5)
+X'' = point(9, 5)
+
+Y' = point(5, 1)
+Y'' = point(5, 9)
+
+X_PROJ = projection(P, line(X', X''))
+Y_PROJ = projection(P, line(Y', Y''))
+
+draw
+  X'.X'' arrow, lightgray
+  Y'.Y'' arrow, lightgray
+  C
+  P.X_PROJ green
+  P.Y_PROJ green
+  O.P magenta
+  P; O;
+end
+
+draw font("Consolas-Bold-8")
+  cat("Angle = ", Angle, " degrees") point(7.2, 2) 270deg
+  cat("Radius = ", Radius) point(6.7, 2.4) 270deg
+  "x" X_PROJ (ordinate(Y_PROJ) >= 5 ? 270 | 90)deg
+  "y" Y_PROJ (abscissa(X_PROJ) >= 5 ? 180 | 0)deg
+end
+
+label
+  P Angle: font("Consolas-Bold-10")
+  O 225deg font("Consolas-Bold-10")
+  X'', O, P magenta
+end
