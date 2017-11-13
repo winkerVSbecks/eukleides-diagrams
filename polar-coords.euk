@@ -1,0 +1,44 @@
+box 0, 0, 10, 10
+
+Angle = 30
+
+M = point(0, 0)
+N = point(10, 0)
+
+O = point(5, 5)
+C = circle(O, 2)
+
+P = point(C, Angle:)
+
+% Axis
+X' = point(1, 5)
+X'' = point(9, 5)
+
+Y' = point(5, 1)
+Y'' = point(5, 9)
+
+X_PROJ = projection(P, line(X', X''))
+Y_PROJ = projection(P, line(Y', Y''))
+
+draw
+  X'.X'' arrow, lightgray
+  Y'.Y'' arrow, lightgray
+  C
+  P.X_PROJ green
+  P.Y_PROJ green
+  O.P magenta
+  P; O;
+end
+
+draw font("Consolas-Bold-8")
+  cat(Angle, " deg") point(5.75, 5.04) 30deg, font("Consolas-Bold-6")
+  cat("r = ", 2) point(5.3, 5.75) 0deg, font("Consolas-Bold-6")
+  "x" X_PROJ 270:
+  "y" Y_PROJ 180:
+end
+
+label
+  P Angle: font("Consolas-Bold-10")
+  O 225deg font("Consolas-Bold-10")
+  X'', O, P magenta
+end
