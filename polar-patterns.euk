@@ -1,0 +1,23 @@
+box 0, 0, 10, 10
+
+O = point(5, 5)
+C = circle(O, 2)
+count = 12
+
+S = polygon(count, O, 3, 0:)
+
+draw green
+  circle(O, 0.25); circle(O, 0.5); circle(O, 0.75); circle(O, 1);
+  circle(O, 1.25); circle(O, 1.5); circle(O, 1.75); circle(O, 2);
+end
+
+for P in S
+  draw O.P magenta
+  V = vector(O, P)
+  a = arg(V) > 0 ? arg(V) | 360 + arg(V)
+  draw cat("", a) P a:, font("Consolas-Bold-6")
+end
+
+pts = polygon(count, O, 2, 0:).polygon(count, O, 1.75, 15:).polygon(count, O, 1.5, 30:).polygon(count, O, 1.25, 45:).polygon(count, O, 1, 60:).polygon(count, O, 0.75, 75:).polygon(count, O, 0.5, 90:)
+
+for P in pts draw P black end

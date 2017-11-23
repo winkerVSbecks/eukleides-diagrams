@@ -1,0 +1,56 @@
+box 0, 0, 20, 15
+
+Angle = 60
+Radius = 3
+
+O = point(2, 2)
+C = point(circle(O, 10), 30:)
+RC = circle(C, Radius)
+P = point(RC, Angle:)
+
+% Axis
+X' = point(1, ordinate(O))
+X'' = point(19, ordinate(O))
+
+Y' = point(abscissa(O), 1)
+Y'' = point(abscissa(O), 14)
+
+X_PROJ = projection(C, line(X', X''))
+Y_PROJ = projection(C, line(Y', Y''))
+Y_PROJ' = point(19, ordinate(Y_PROJ))
+
+draw green
+  C.X_PROJ green
+  C.Y_PROJ green
+end
+
+draw darkgray, arrow
+  X'.X''; Y'.Y'';
+end
+
+draw lightgray
+  C.Y_PROJ'
+  RC dashed
+  O.C
+end
+
+draw C.P magenta
+
+draw
+  O; C; P;
+  X_PROJ; Y_PROJ;
+end
+
+draw font("Consolas-Bold-12")
+  cat(Angle, " deg") point(11.75, 7.25) 30deg
+  cat("r = ", Radius) point(10.1, 8.5) 0deg
+  "cx" X_PROJ 270:
+  "cy" Y_PROJ 180:
+end
+
+label
+  P Angle: font("Consolas-Bold-12")
+  O 225deg font("Consolas-Bold-12")
+  C 225deg font("Consolas-Bold-12")
+  Y_PROJ', C, P magenta
+end
